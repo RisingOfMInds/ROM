@@ -1,23 +1,14 @@
 {% extends 'blog/base.html' %}
 {% block meta %}
-    {% with description="solo mototcycle travels, tech and everything related in life" title="Rider Wolf" keywords="solo travel,ride,motorcycle tours, tech, developer" %}
+    {% with description="solo mototcycle travels, tech and everything related in life" title="Rising Of Minds" keywords="rising, of, minds tech, developer" %}
         {{ block.super }}
     {% endwith %}
 {% endblock meta %}
 {% block content %}
-    <div class="cover">
-        <img src="https://s3.ap-south-1.amazonaws.com/riderwolf-static/static/img/cover-image.jpg"
-             alt="Cover Image"/>
-    </div>
     <div class="content container">
         <div class="row">
             <div class="col-md-12">
-                <div class="row">
-                    <div class="col-md-12 horz-line">
-                        <hr>
-                    </div>
-                </div>
-                <div class="row">
+                <div class="row mt-5">
                     {% for blog in popular_blogs %}
                         <div class="col-md-4 mb-5">
                             <div class="popular_posts">

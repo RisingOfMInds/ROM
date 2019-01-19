@@ -1,5 +1,5 @@
 {% extends 'blog/base.html' %}
-{% load risingofminds_tags %}
+{% load blog_tags %}
 {% block meta %}
     {% with description=blog.description title=blog.title keywords=blog.tags %}
         {{ block.super }}
