@@ -1,0 +1,51 @@
+{% extends 'blog/base.html' %}
+{% block meta %}
+    {% with description="solo mototcycle travels, tech and everything related in life" title="Rider Wolf" keywords="solo travel,ride,motorcycle tours, tech, developer" %}
+        {{ block.super }}
+    {% endwith %}
+{% endblock meta %}
+{% block content %}
+    <div class="cover">
+        <img src="https://s3.ap-south-1.amazonaws.com/riderwolf-static/static/img/cover-image.jpg"
+             alt="Cover Image"/>
+    </div>
+    <div class="content container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-12 horz-line">
+                        <hr>
+                    </div>
+                </div>
+                <div class="row">
+                    {% for blog in popular_blogs %}
+                        <div class="col-md-4 mb-5">
+                            <div class="popular_posts">
+                                <a class="popular_posts_image"
+                                   style="text-decoration: none; background-image: url({{ blog.get_thumbnail_url }})"
+                                   href={% url 'blog_detail' cat_slug=blog.category.slug slug=blog.slug pk=blog.pk %}>
+                                </a>
+                            </div>
+                            <div>
+                                <a style="text-decoration: none;"
+                                   href={% url 'blog_detail' cat_slug=blog.category.slug slug=blog.slug pk=blog.pk %}>
+                                    <div class="popular_posts_title text-dark font-bold mb-1">{{ blog.title }}</div>
+                                    <div class="popular_posts_description text-muted font-thin">{{ blog.description }}</div>
+                                </a>
+                            </div>
+                            <div class="mt-2 md-2">
+                                {% if blog.posted_on %}
+                                    <div class="date text-muted">
+                                        {{ blog.posted_on }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <br>
+    </div>
+    {% include "blog/footer.html" %}
+{% endblock %}

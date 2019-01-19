@@ -1,0 +1,348 @@
+.font-bold {
+    font-weight: 600;
+}
+
+.font-thin {
+    font-weight: normal;
+}
+
+.page-header {
+    background-color: #ffffff;
+    border-bottom: 1px solid aliceblue;
+    opacity: 1;
+    z-index: 1000;
+    top: 0;
+    width: 100%;
+}
+
+.logo {
+    padding: 0 20px 0 40px;
+}
+
+.navigation {
+    display: inline-block;
+    height: 100%;
+}
+
+.align-items-center {
+    -ms-flex-align: center !important;
+    align-items: center !important;
+    display: flex;
+    justify-content: center;
+}
+
+.navigation ul li a {
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+.active a {
+    color: #FF5800!important;
+}
+
+.logo span, .logo span a, .logo span a:visited, .logo span a:active {
+    color: #FF5800;
+    font-size: 2.5rem;
+    font-family: "Audiowide", sans-serif;
+    text-decoration: none;
+}
+
+.vertical-hr {
+    border-right: 1px solid #333;
+}
+
+@media screen and (max-width: 768px) {
+    .logo {
+        padding: 0;
+        text-align: center;
+    }
+
+    .sticky {
+        position: fixed;
+    }
+
+    .padding-sticky {
+        padding-top: 109px;
+    }
+
+    .navigation {
+        float: none;
+    }
+}
+
+.content {
+    padding-bottom: 50px;
+    font-family: "Avenir", sans-serif;
+}
+
+.blog_posted_on {
+    font-size: 0.8rem;
+}
+
+.about_description {
+    font-size: 1.2rem;
+    line-height: 2rem;
+    letter-spacing: 0.02rem;
+    /*font-weight: bold;*/
+}
+
+.about_title {
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+@media screen and (max-width: 768px){
+    .about_title {
+        font-size: 2.4rem;
+        text-align: center;
+    }
+
+    .about_description {
+        font-size: 1rem;
+        line-height: 1.8rem;
+        text-align: center;
+    }
+}
+
+/*h1, h2, h3, h4 {*/
+/*font-family: 'Lobster', "Roboto", "Lucida Grande", Verdana, Arial, sans-serif;*/
+/*color: #828282;*/
+/*}*/
+
+.list_title {
+    margin: 10px 0;
+}
+
+.list_title span a {
+    font-size: 1.8rem;
+    font-family: "Lucida Grande", sans-serif;
+    color: #6c757d !important;
+}
+
+.date {
+    font-size: 0.9rem;
+}
+
+.save {
+    float: right;
+}
+
+.post-form textarea, .post-form input {
+    width: 100%;
+}
+
+.post {
+    margin: 0 20px 70px;
+}
+
+@media screen and (max-width: 768px) {
+    .post {
+        margin: 0 0 30px;
+    }
+}
+
+.post h1 a, .post h1 a:visited {
+    color: #000000;
+}
+
+.thumbnail_image {
+    width: 220px;
+    height: 150px;
+    line-height: 150px;
+    object-fit: cover;
+}
+
+.blog_card {
+    margin: 15px 0;
+    font-size: 1rem;
+}
+
+.blog_border {
+    border: 1px solid gainsboro;
+    border-radius: 5px;
+}
+
+.horz-line {
+    margin: 20px 0;
+}
+
+.cover img {
+    width: 100%;
+    max-height: 45vmax;
+}
+
+.recent_posts {
+    background: no-repeat center;
+    background-size: cover;
+    height: 400px;
+    text-align: center;
+}
+
+.popular_posts {
+    margin-bottom: 5%;
+}
+
+.popular_posts_title {
+    font-size: 1.4rem;
+}
+
+.popular_posts_description {
+    font-size: 1.1rem;
+}
+
+.popular_posts_image {
+    background-size: cover;
+    background-position: 50% 50%;
+    display: block;
+    height: 200px;
+}
+
+.darken_thumbnail {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.recent_posts a {
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    font-size: 2rem;
+}
+
+.recent_posts p {
+    color: white;
+    font-size: 1.5rem;
+}
+
+.bottom-align-text {
+    position: absolute;
+    bottom: 50px;
+}
+
+.categories {
+    width: 100%;
+    height: 100%;
+    padding: 20%;
+    color: #FF5800;
+    background-color: aliceblue;
+}
+
+footer {
+    position: relative;
+    width: 100%;
+    bottom: 0;
+    min-height: 100px;
+    background-color: #FF5800;
+    border-top: 1px solid aliceblue;
+    color: white;
+    padding: 15px 0;
+}
+
+footer .fa {
+    color: white;
+}
+
+span .fa {
+    font-size: 1rem;
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+}
+
+.blog_detail_head {
+    text-align: center;
+    margin: 10px;
+}
+
+.blog_detail_title {
+    font-size: 2.8rem;
+    padding: 5px 0 0;
+}
+
+.blog_detail_description {
+    font-size: 1.6rem;
+}
+
+@media screen and (max-width: 768px) {
+    .blog_detail_description {
+        font-size: 1.1rem;
+    }
+
+    .blog_detail_title {
+        font-size: 2.2rem;
+    }
+
+    .date {
+        font-size: 0.8rem;
+    }
+}
+
+.blog_detail_image {
+    margin: 30px 0;
+}
+
+.blog_detail_image img {
+    width: 100%;
+    max-height: 550px;
+}
+
+.blog_detail_content {
+    margin-top: 20px;
+    font-size: 1.3rem;
+    line-height: 2.4rem;
+    letter-spacing: 0.02rem;
+}
+
+.blog_detail_content p:first-child {
+    color: #6c757d !important;
+}
+
+.blog_detail_content p:first-child:first-letter {
+    font-size: 4.8rem;
+    font-weight: 700;
+    float: left;
+    line-height: 4.8rem;
+    margin-right: 4px;
+    text-transform: uppercase;
+    color: #FF5800;
+}
+
+@media screen and (max-width: 768px) {
+
+    .blog_detail_content {
+        font-size: 1.1rem;
+        line-height: 2rem;
+    }
+
+    .blog_detail_content p:first-child:first-letter {
+        font-size: 4rem;
+        line-height: 4rem;
+    }
+}
+
+img + br + em {
+    font-style: normal;
+    font-family: sans-serif;
+    display: inherit;
+    text-align: center;
+    color: #6c757d !important;
+    font-size: 95%;
+    margin: .5rem 0 0;
+}
+
+p img {
+    max-height: 650px;
+    width: 100%;
+}
+
+.circular-dp {
+    width: 25vmin;
+    height: 25vmin;
+    min-height: 15vmax;
+    min-width: 15vmax;
+    background-color: #6c757d !important;
+    /*background-image: url("http://www.whatcar.com/car-leasing/images/vehicles/medium/100895.jpg");*/
+    background-size: cover;
+}
+

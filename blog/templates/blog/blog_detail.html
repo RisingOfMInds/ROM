@@ -1,0 +1,48 @@
+{% extends 'blog/base.html' %}
+{% load risingofminds_tags %}
+{% block meta %}
+    {% with description=blog.description title=blog.title keywords=blog.tags %}
+        {{ block.super }}
+    {% endwith %}
+{% endblock meta %}
+{% block content %}
+    <div class="content container" id="detail">
+        <div>
+            <div class="post">
+                <div class="blog_detail_head">
+                    <p class="blog_detail_title">{{ blog.title }}</p>
+                    <p class="blog_detail_description text-muted">{{ blog.description }}</p>
+                </div>
+                <div class="blog_detail_image">
+                    <img src="{{ blog.get_thumbnail_url }}"/>
+                </div>
+                <div class="col-md-10 mx-auto">
+                    <hr>
+                    {% if blog.posted_on %}
+                        <div class="date">
+                            {{ blog.posted_on }}
+                        </div>
+                    {% endif %}
+                    <div class="blog_detail_content">
+                        {{ blog.formatted_markdown| safe|linebreaksbr }}
+                    </div>
+                    <br>
+                    <div class="text-right">
+                        <span class="col-md-1"><a
+                                onclick="popupwindow('https://www.facebook.com/sharer/sharer.php?u='+document.URL, '_blank', window);"
+                                class="fa fa-facebook-square"></a></span>
+                        <span class="col-md-1"><a
+                                onclick="popupwindow('https://twitter.com/intent/tweet?url='+document.URL+'&text={{ blog.title }}&hashtags={{ blog.tags }}', '_blank', window);"
+                                class="fa fa-twitter"></a></span>
+                        <span class="col-md-1"><a
+                                onclick="popupwindow('https://www.linkedin.com/shareArticle?mini=true&url='+document.URL+'&title={{ blog.title }}&summary={{ blog.description }}&source=RiderWolf', '_blank', window);"
+                                class="fa fa-linkedin-square"></a></span>
+                    </div>
+                    <hr>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    {% include "blog/footer.html" %}
+{% endblock content %}

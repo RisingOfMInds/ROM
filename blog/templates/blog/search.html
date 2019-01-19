@@ -1,0 +1,39 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% block meta %}
+    {% with description="{{ cat_slug }}" title="Rider Wolf" keywords="search wolf rider, travel, blog, tech, developer" %}
+        {{ block.super }}
+    {% endwith %}
+{% endblock meta %}
+{% block content %}
+    <div class="content container">
+        <br>
+        <br>
+        <div class="row">
+            {% for blog in posts %}
+                <div class="col-md-4 mb-5">
+                    <div class="popular_posts">
+                        <a class="popular_posts_image"
+                           style="text-decoration: none; background-image: url({{ blog.get_thumbnail_url }})"
+                           href={% url 'blog_detail' cat_slug=blog.category.slug slug=blog.slug pk=blog.pk %}>
+                        </a>
+                    </div>
+                    <div>
+                        <a style="text-decoration: none;"
+                           href={% url 'blog_detail' cat_slug=blog.category.slug slug=blog.slug pk=blog.pk %}>
+                            <div class="popular_posts_title text-dark font-bold mb-1">{{ blog.title }}</div>
+                            <div class="popular_posts_description text-muted font-thin">{{ blog.description }}</div>
+                        </a>
+                    </div>
+                    <div class="mt-2 md-2">
+                        {% if blog.posted_on %}
+                            <div class="date text-muted">
+                                {{ blog.posted_on }}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

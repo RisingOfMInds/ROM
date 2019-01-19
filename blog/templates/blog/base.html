@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ G_ANALYTICS }}"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+        gtag('config', '{{ G_ANALYTICS }}');
+    </script>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link href="//fonts.googleapis.com/css?family=Audiowide&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+    <meta charset="UTF-8">
+    {% block meta %}
+        <meta name="description" content="{{ description }}">
+        <title>{{ title }}</title>
+        <meta name="keywords" content="{{ keywords }}">
+    {% endblock meta %}
+    <meta name="robots" content="index,follow">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="google-site-verification" content="xLF5KZEwGPB69_ZsPeyQLEwgOBq9CYjHiEhzdnTIe_A"/>
+</head>
+<body>
+{% include "blog/header.html" with categories=categories %}
+<main>
+    {% block content %}
+    {% endblock content %}
+</main>
+</body>
+<script>
+    window.onscroll = function () {
+        scrollFunction()
+    };
+    let header = document.getElementById("header");
+    let logo = document.getElementById("logo");
+    let body = document.getElementsByTagName("body")[0];
+
+    function scrollFunction() {
+        if (window.pageYOffset > 62) {
+            header.classList.add("sticky");
+            logo.classList.add("d-none");
+            body.classList.add("padding-sticky");
+        } else {
+            header.classList.remove("sticky");
+            logo.classList.remove("d-none");
+            body.classList.remove("padding-sticky");
+        }
+    }
+
+    if (window.width < 768) {
+        let content = document.getElementById("detail");
+        content.classList.remove("container");
+    }
+
+    function popupwindow(url, title, win) {
+        const w = 520;
+        const h = 520;
+        var y = win.top.outerHeight / 2 + win.top.screenY - (h / 2);
+        var x = win.top.outerWidth / 2 + win.top.screenX - (w / 2);
+        return win.open(encodeURI(url), title, 'location=yes, status=yes,scrollbars=yes, width=' + w + ', height=' + h + ', top=' + y + ', left=' + x);
+    }
+</script>
+</html>

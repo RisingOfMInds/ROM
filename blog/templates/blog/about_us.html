@@ -1,0 +1,42 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% block meta %}
+    {% with description="Ashutosh Singh is the developer and writer with posts" title="Rider Wolf" keywords="ashutosh singh, blog, travel, tech, developer" %}
+        {{ block.super }}
+    {% endwith %}
+{% endblock meta %}
+{% block content %}
+    <div class="content container">
+        <div class="col-md-12 m-4 d-none d-md-block"></div>
+        <div class="row">
+            <div class="col-md-4 align-items-center">
+                <button class="circular-dp rounded-circle my-2">
+                </button>
+            </div>
+            <div class="col-md-8">
+                <div class="row">
+                    <div class="col-md-12 about_title my-2">Ashutosh Singh</div>
+                    <div class="col-md-12 m-4 d-none d-md-block"></div>
+                    <div class="col-md-12 about_description my-2">
+                        <p>
+                            A highly qualified software professional working with one of the leaders of the industry.
+                            Proficient in building end to end web applications and enterprise solutions.
+                            Creative in nature and curious to learn almost everything worth learning.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12 m-4 d-none d-md-block"></div>
+        <hr>
+        <div class="row">
+
+            <div class="col-12">
+                Something
+            </div>
+            <div class="col-12">
+                Other thing
+            </div>
+        </div>
+    </div>
+{% endblock %}
