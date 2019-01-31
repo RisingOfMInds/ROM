@@ -342,7 +342,13 @@ p img {
     min-height: 15vmax;
     min-width: 15vmax;
     background-color: #6c757d !important;
-    background-image: url("https://rom-static.s3.amazonaws.com/static/blog_images/how-i-made-this-blog-manika.jpeg");
+    background-size: cover;
+}
+
+.author_thumbnail {
+    width: 56px;
+    height: 56px;
+    background-color: #6c757d !important;
     background-size: cover;
 }
 

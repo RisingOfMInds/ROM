@@ -1,7 +1,7 @@
 from django.contrib import admin
 from markdownx.admin import MarkdownxModelAdmin
 
-from .models import Blog, Category, Images
+from .models import Blog, Category, Images, Author
 
 
 class ImagesInline(admin.TabularInline):
@@ -18,3 +18,4 @@ class BlogAdmin(MarkdownxModelAdmin):
 admin.site.register(Blog, BlogAdmin)
 admin.site.register(Category)
 admin.site.register(Images)
+admin.site.register(Author)

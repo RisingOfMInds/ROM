@@ -8,26 +8,28 @@
 {% block content %}
     <div class="content container">
         <div class="col-md-12 m-4 d-none d-md-block"></div>
-        <div class="row">
-            <div class="col-md-4 align-items-center">
-                <button class="circular-dp rounded-circle my-2">
-                </button>
-            </div>
-            <div class="col-md-8">
-                <div class="row">
-                    <div class="col-md-12 about_title my-2">Manika Matta</div>
-                    <div class="col-md-12 m-4 d-none d-md-block"></div>
-                    <div class="col-md-12 about_description my-2">
-                        <p>
-                            My writings are generally poured out on relatable, generic, thoughtful and motivational contents.
-                            I want to escalate in the arena of writing which I have chosen for myself and want to see myself as a prosperous writer down the road.
-                        </p>
+
+        {% for author in authors %}
+            <div class="row">
+                <div class="col-md-4 align-items-center">
+                    <img class="circular-dp rounded-circle my-2" src={{ author.get_thumbnail_url }} />
+                </div>
+                <div class="col-md-8">
+                    <div class="row">
+                        <div class="col-md-12 about_title my-2">{{ author }}</div>
+                        <div class="col-md-12 m-4 d-none d-md-block"></div>
+                        <div class="col-md-12 about_description my-2">
+                            <p>
+                                {{ author.description }}
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-md-12 m-4 d-none d-md-block"></div>
-        <hr>
+            <div class="col-md-12 m-4 d-none d-md-block"></div>
+            <hr>
+        {% endfor %}
+
         <div class="row">
         </div>
     </div>

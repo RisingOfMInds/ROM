@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.utils import timezone
 
-from .models import Blog, Category
+from .models import Blog, Category, Author
 
 
 def search(request, slug=''):
@@ -15,10 +15,10 @@ def search(request, slug=''):
     return render(request, 'blog/search.html', {'posts': posts, 'categories': categories, 'cat_slug': slug})
 
 
-
 def about_us(request):
     categories = Category.objects.all()[:4]
-    return render(request, 'blog/about_us.html', {'categories': categories})
+    authors = Author.objects.all()
+    return render(request, 'blog/about_us.html', {'categories': categories,'authors': authors})
 
 
 def blog_detail(request, cat_slug, slug, pk):

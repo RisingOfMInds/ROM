@@ -16,18 +16,27 @@
                 <div class="blog_detail_image">
                     <img src="{{ blog.get_thumbnail_url }}"/>
                 </div>
+                <div class="row mx-1">
+                    <img class="author_thumbnail rounded-circle my-1" src={{ blog.author.get_thumbnail_url }} />
+                    <div class="col-6">
+                        <div class="lead">{{ blog.author }}</div>
+                        {% if blog.posted_on %}
+                            <div class="date small mt-2">
+                                {{ blog.posted_on }}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+                <hr>
                 <div class="col-md-10 mx-auto">
-                    <hr>
-                    {% if blog.posted_on %}
-                        <div class="date">
-                            {{ blog.posted_on }}
-                        </div>
-                    {% endif %}
                     <div class="blog_detail_content">
                         {{ blog.formatted_markdown| safe|linebreaksbr }}
                     </div>
                     <br>
                     <div class="text-right">
+                        <span class="col-md-1 d-md-none"><a
+                                onclick="popupwindow(`https://wa.me/?text={{ blog.title }} ${document.URL}`, '_blank', window);"
+                                class="fa fa-whatsapp"></a></span>
                         <span class="col-md-1"><a
                                 onclick="popupwindow('https://www.facebook.com/sharer/sharer.php?u='+document.URL, '_blank', window);"
                                 class="fa fa-facebook-square"></a></span>
