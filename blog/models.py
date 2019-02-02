@@ -2,12 +2,12 @@ import logging
 
 import boto3
 from PIL import Image
+from django.contrib.auth.models import AbstractUser
 from django.db import models, transaction
 from django.dispatch import receiver
 from django.utils.text import slugify
 from markdownx.utils import markdownify
 from mdeditor.fields import MDTextField
-from django.contrib.auth.models import AbstractUser
 
 from risingofminds import settings
 
@@ -47,7 +47,8 @@ class Author(AbstractUser):
 
 
 class Blog(models.Model):
-    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default=1)
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, editable=False, null=True,
+                               blank=True)
     title = models.CharField(max_length=100, unique=True)
     tags = models.CharField(max_length=100, default='')
     thumbnail = models.ImageField(upload_to=thumbnail_name, blank=True)
