@@ -17,7 +17,7 @@ def search(request, slug=''):
 
 def about_us(request):
     categories = Category.objects.all()[:4]
-    authors = Author.objects.all()
+    authors = Author.objects.filter(is_superuser=0, is_active=1)
     return render(request, 'blog/about_us.html', {'categories': categories,'authors': authors})
 
 
