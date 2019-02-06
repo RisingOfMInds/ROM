@@ -1,7 +1,4 @@
 from django.contrib import admin
-from django.contrib.auth.admin import UserAdmin
-from django.contrib.auth.models import AbstractUser
-from django.utils.safestring import mark_safe
 from markdownx.admin import MarkdownxModelAdmin
 
 from .models import Blog, Category, Images, Author

@@ -18,7 +18,8 @@ def search(request, slug=''):
 def about_us(request):
     categories = Category.objects.all()[:4]
     authors = Author.objects.filter(is_superuser=0, is_active=1)
-    return render(request, 'blog/about_us.html', {'categories': categories,'authors': authors})
+    posts = Blog.objects.filter(author__in=authors).order_by('author_id')
+    return render(request, 'blog/about_us.html', {'categories': categories, 'authors': authors, 'blogs': posts})
 
 
 def blog_detail(request, cat_slug, slug, pk):
