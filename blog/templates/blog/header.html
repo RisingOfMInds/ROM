@@ -10,7 +10,6 @@
                                     class="font-thin text-muted text-uppercase"
                                     href="{% url 'search' slug=category.slug %}">{{ category.title }}</a></li>
                         {% endfor %}
-                        <li class="mx-md-4 m-3 {% if "about-us" in request.path %}active{% endif %}"><a class="font-thin text-muted" href="/about-us">AUTHOR</a></li>
                     </ul>
                 </div>
             </nav>

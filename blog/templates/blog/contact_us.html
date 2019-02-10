@@ -1,0 +1,101 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% block meta %}
+    {% with description="Contact Rising of Minds, contact us for blog site development" title="Contact Rising of Minds" keywords="feedback, authors, risingofminds, blog, contact, tech, developer" %}
+        {{ block.super }}
+    {% endwith %}
+{% endblock meta %}
+{% block content %}
+    <div class="content container">
+        <div class="col-md-12 d-md-block">
+            <div class="row justify-content-center">
+                <div class="title col-12 col-lg-8 mt-3">
+                    <h2 class="align-center">
+                        <strong>Contact Us</strong>
+                    </h2>
+                    <br>
+                    <p class="mbr-section-subtitle align-center mbr-light pb-3 mbr-fonts-style display-5">
+                        Your valuable suggestions and feedback are most welcome
+                    </p>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="media-container-column col-lg-8" data-form-type="formoid">
+                    <div data-form-alert="" hidden="">
+                        Thanks for filling out the form!
+                    </div>
+
+                    <form class="mbr-form form-active" method="post"
+                          data-form-title="Rising of Minds Form">
+                        {% csrf_token %}
+                        {% if form.non_field_errors %}
+                            <div class="alert alert-danger" role="alert">
+                                {% for error in form.non_field_errors %}
+                                    {{ error }}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                        <div class="row row-sm-offset">
+                            <div class="col-md-4 multi-horizontal" data-for="name">
+                                <div class="form-group">
+                                    <label class="form-control-label mbr-fonts-style display-7"
+                                           for="{{ form.name.id_for_label }}">{{ form.name.label }}</label>
+                                    <input type="text" class="form-control" name="{{ form.name.name }}"
+                                           data-form-field="{{ form.name.name }}"
+                                           id="{{ form.name.id_for_label }}"
+                                           {% if form.name.value != None %}value="{{ form.name.value|stringformat:'s' }}"{% endif %}
+                                           maxlength="{{ form.name.field.max_length }}"
+                                           {% if form.name.field.required %}required{% endif %}
+                                    >
+                                </div>
+                            </div>
+                            <div class="col-md-4 multi-horizontal" data-for="email">
+                                <div class="form-group">
+                                    <label class="form-control-label mbr-fonts-style display-7"
+                                           for="{{ form.email.id_for_label }}">{{ form.email.label }}</label>
+                                    <input type="email" class="form-control"
+                                           name="{{ form.email.name }}"
+                                           data-form-field="{{ form.email.name }}"
+                                           id="{{ form.email.id_for_label }}"
+                                           {% if form.email.value != None %}value="{{ form.email.value|stringformat:'s' }}"{% endif %}
+                                           maxlength="{{ form.email.field.max_length }}"
+                                           {% if form.email.field.required %}required{% endif %}
+                                    >
+                                </div>
+                            </div>
+                            <div class="col-md-4 multi-horizontal" data-for="phone">
+                                <div class="form-group">
+                                    <label class="form-control-label mbr-fonts-style display-7"
+                                           for="{{ form.phone.id_for_label }}">{{ form.phone.label }}</label>
+                                    <input type="tel" class="form-control"
+                                           name="{{ form.phone.name }}"
+                                           data-form-field="{{ form.phone.name }}"
+                                           id="{{ form.phone.id_for_label }}"
+                                           {% if form.phone.value != None %}value="{{ form.phone.value|stringformat:'s' }}"{% endif %}
+                                           maxlength="{{ form.phone.field.max_length }}"
+                                           {% if form.phone.field.required %}required{% endif %}
+                                    >
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" data-for="message">
+                            <label class="form-control-label mbr-fonts-style display-7"
+                                   for="{{ form.message.id_for_label }}">{{ form.message.label }}</label>
+                            <textarea type="text" class="form-control" rows="8"
+                                      name="{{ form.message.name }}"
+                                      data-form-field="{{ form.message.name }}"
+                                      id="{{ form.message.id_for_label }}"
+                                      maxlength="{{ form.message.field.max_length }}"
+                                      {% if form.message.field.required %}required{% endif %}
+                            ></textarea>
+                        </div>
+
+                        <span class="input-group-btn">
+                            <button type="submit" class="btn btn-primary btn-form display-4">SEND FORM</button>
+                        </span>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
