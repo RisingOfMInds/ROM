@@ -1,9 +1,23 @@
+:root {
+    --c-font: 1rem;
+    --t-font: 2rem;
+    --s-font: 0.8rem;
+    --lg-c-line-height: 1.6rem;
+    --c-letter-spacing: -.00278rem;
+    --font-family: Arial, x-locale-body, sans-serif
+}
+
 .font-bold {
     font-weight: 600;
 }
 
 .font-thin {
     font-weight: normal;
+}
+
+body{
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
 }
 
 .page-header {
@@ -33,7 +47,7 @@
 
 .navigation ul li a {
     text-decoration: none;
-    font-size: 1rem;
+    font-size: var(--c-font);
 }
 
 .active a {
@@ -42,7 +56,7 @@
 
 .logo span, .logo span a, .logo span a:visited, .logo span a:active {
     color: #2f2361;
-    font-size: 2.5rem;
+    font-size: var(--t-font);
     font-family: "Audiowide", sans-serif;
     text-decoration: none;
 }
@@ -72,34 +86,34 @@
 
 .content {
     padding-bottom: 50px;
-    font-family: "Avenir", sans-serif;
+    font-family: var(--font-family);
 }
 
 .blog_posted_on {
-    font-size: 0.8rem;
+    font-size: var(--s-font);
 }
 
 .about_description {
-    font-size: 1.2rem;
-    line-height: 2rem;
-    letter-spacing: 0.02rem;
+    font-size: var(--c-font);
+    line-height: var(--lg-c-line-height);
+    letter-spacing: var(--c-letter-spacing);
     /*font-weight: bold;*/
 }
 
 .about_title {
-    font-size: 2rem;
+    font-size: var(--t-font);
     font-weight: bold;
 }
 
 @media screen and (max-width: 768px){
     .about_title {
-        font-size: 2rem;
+        font-size: var(--t-font);
         text-align: center;
     }
 
     .about_description {
-        font-size: 1rem;
-        line-height: 1.8rem;
+        font-size: var(--c-font);
+        line-height: var(--lg-c-line-height);
         text-align: center;
     }
 }
@@ -114,13 +128,13 @@
 }
 
 .list_title span a {
-    font-size: 1.8rem;
+    font-size: var(--c-font);
     font-family: "Lucida Grande", sans-serif;
     color: #6c757d !important;
 }
 
 .date {
-    font-size: 0.9rem;
+    font-size: var(--s-font);
 }
 
 .save {
@@ -154,7 +168,7 @@
 
 .blog_card {
     margin: 15px 0;
-    font-size: 1rem;
+    font-size: var(--c-font);
 }
 
 .blog_border {
@@ -183,11 +197,11 @@
 }
 
 .popular_posts_title {
-    font-size: 1.4rem;
+    font-size: var(--c-font);
 }
 
 .popular_posts_description {
-    font-size: 1.1rem;
+    font-size: var(--c-font);
 }
 
 .popular_posts_image {
@@ -207,12 +221,12 @@
     text-align: center;
     text-decoration: none;
     color: white;
-    font-size: 2rem;
+    font-size: var(--c-font);
 }
 
 .recent_posts p {
     color: white;
-    font-size: 1.5rem;
+    font-size: var(--c-font);
 }
 
 .bottom-align-text {
@@ -244,7 +258,7 @@ footer .fa {
 }
 
 span .fa {
-    font-size: 1rem;
+    font-size: var(--c-font);
     text-decoration: none;
     color: black;
     cursor: pointer;
@@ -256,25 +270,25 @@ span .fa {
 }
 
 .blog_detail_title {
-    font-size: 2.8rem;
+    font-size: var(--t-font);
     padding: 5px 0 0;
 }
 
 .blog_detail_description {
-    font-size: 1.6rem;
+    font-size: var(--c-font);
 }
 
 @media screen and (max-width: 768px) {
     .blog_detail_description {
-        font-size: 1.1rem;
+        font-size: var(--c-font);
     }
 
     .blog_detail_title {
-        font-size: 2.2rem;
+        font-size: var(--t-font);
     }
 
     .date {
-        font-size: 0.8rem;
+        font-size: var(--s-font);
     }
 }
 
@@ -284,25 +298,29 @@ span .fa {
 
 .blog_detail_image img {
     width: 100%;
-    max-height: 550px;
+    max-height: 450px;
 }
 
 .blog_detail_content {
     margin-top: 20px;
-    font-size: 1.3rem;
-    line-height: 2.4rem;
-    letter-spacing: 0.02rem;
+    font-size: var(--c-font);
+    line-height: var(--lg-c-line-height);
+    letter-spacing: var(--c-letter-spacing);
 }
 
 .blog_detail_content p:first-child {
     color: #6c757d !important;
 }
 
+.lead{
+    font-size: var(--c-font);
+}
+
 .blog_detail_content p:first-child:first-letter {
-    font-size: 4.8rem;
+    font-size: 4.2rem;
     font-weight: 700;
     float: left;
-    line-height: 4.8rem;
+    line-height: 4.2rem;
     margin-right: 4px;
     text-transform: uppercase;
     color: #2f2361;
@@ -311,13 +329,13 @@ span .fa {
 @media screen and (max-width: 768px) {
 
     .blog_detail_content {
-        font-size: 1.1rem;
-        line-height: 2rem;
+        font-size: var(--c-font);
+        line-height: var(--lg-c-line-height);
     }
 
     .blog_detail_content p:first-child:first-letter {
         font-size: 4rem;
-        line-height: 4rem;
+        line-height: 3.8rem;
     }
 }
 

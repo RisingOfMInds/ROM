@@ -9,26 +9,26 @@
     <div class="content container" id="detail">
         <div>
             <div class="post">
-                <div class="blog_detail_head">
-                    <p class="blog_detail_title">{{ blog.title }}</p>
-                    <p class="blog_detail_description text-muted">{{ blog.description }}</p>
-                </div>
-                <div class="blog_detail_image">
-                    <img src="{{ blog.get_thumbnail_url }}"/>
-                </div>
-                <div class="row mx-1">
-                    <img class="author_thumbnail rounded-circle my-1" src={{ blog.author.get_thumbnail_url }} />
-                    <div class="col-6">
-                        <div class="lead">{{ blog.author }}</div>
-                        {% if blog.posted_on %}
-                            <div class="date small mt-2">
-                                {{ blog.posted_on }}
-                            </div>
-                        {% endif %}
-                    </div>
-                </div>
-                <hr>
                 <div class="col-md-10 mx-auto">
+                    <div class="blog_detail_head">
+                        <p class="blog_detail_title">{{ blog.title }}</p>
+                        <p class="blog_detail_description text-muted">{{ blog.description }}</p>
+                    </div>
+                    <div class="blog_detail_image">
+                        <img src="{{ blog.get_thumbnail_url }}"/>
+                    </div>
+                    <div class="row mx-1">
+                        <img class="author_thumbnail rounded-circle my-1" src="{{ blog.author.get_thumbnail_url }}"  alt="author"/>
+                        <div class="col-6">
+                            <div class="lead">{{ blog.author }}</div>
+                            {% if blog.posted_on %}
+                                <div class="date small mt-2">
+                                    {{ blog.posted_on }}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                <hr>
                     <div class="blog_detail_content">
                         {{ blog.formatted_markdown| safe|linebreaksbr }}
                     </div>
