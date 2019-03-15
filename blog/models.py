@@ -74,7 +74,7 @@ class Blog(models.Model):
         from django.core.files.storage import default_storage as storage
         if not self.thumbnail:
             return ""
-        thumb_file_path = "%s" % (self.thumbnail.name)
+        thumb_file_path = "%s" % self.thumbnail.name
         if storage.exists(thumb_file_path):
             return storage.url(thumb_file_path)
         return ""
@@ -105,7 +105,10 @@ class Images(models.Model):
     image = models.ImageField(upload_to=get_image_filename, blank=True)
 
     def __str__(self):
-        return self.post.title + ': ' + self.image.name
+        if self.image.name is not None:
+            return self.post.title + ': ' + self.image.name
+        else:
+            return self.post.title + ': null'
 
     def get_image_url(self):
         from django.core.files.storage import default_storage as storage
@@ -116,7 +119,7 @@ class Images(models.Model):
             return storage.url(thumb_file_path)
         return ""
 
-    def save(self, size=(800, 500), **kwargs):
+    def save(self, **kwargs):
         from django.core.files.storage import default_storage as storage
         import io
         import os
@@ -129,9 +132,13 @@ class Images(models.Model):
         filename_base, filename_ext = os.path.splitext(filename)
         existing_file = storage.open(filename, 'r')
         image = Image.open(existing_file)
-        image = image.resize(size, Image.ANTIALIAS)
+        size_in_kb = int(len(image.fp.read())/1024)
+        if size_in_kb > 50:
+            print("File Size In Bytes:- ", size_in_kb)
+            width, height = image.size
+            image = image.resize((800, int(800 * height / width)), Image.ANTIALIAS)
         sfile = io.BytesIO()
-        image.save(sfile, filename_ext.replace('.', ''))
+        image.save(sfile, filename_ext.replace('.', ''), quality=100)
         sfile.seek(0)
         s3 = boto3.client('s3', aws_access_key_id=settings.AWS_ACCESS_KEY_ID,
                           aws_secret_access_key=settings.AWS_SECRET_ACCESS_KEY)
