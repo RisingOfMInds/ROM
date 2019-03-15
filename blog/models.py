@@ -134,7 +134,6 @@ class Images(models.Model):
         image = Image.open(existing_file)
         size_in_kb = int(len(image.fp.read())/1024)
         if size_in_kb > 50:
-            print("File Size In Bytes:- ", size_in_kb)
             width, height = image.size
             image = image.resize((800, int(800 * height / width)), Image.ANTIALIAS)
         sfile = io.BytesIO()
