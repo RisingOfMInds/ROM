@@ -135,7 +135,7 @@ class Images(models.Model):
         size_in_kb = int(len(image.fp.read())/1024)
         if size_in_kb > 50:
             width, height = image.size
-            image = image.resize((800, int(800 * height / width)), Image.ANTIALIAS)
+            image = image.resize((750, int(750 * height / width)), Image.ANTIALIAS)
         sfile = io.BytesIO()
         image.save(sfile, filename_ext.replace('.', ''), quality=100)
         sfile.seek(0)

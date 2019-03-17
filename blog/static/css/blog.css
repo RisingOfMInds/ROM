@@ -1,7 +1,9 @@
 :root {
-    --c-font: 1rem;
+    --c-font: 1.1rem;
     --t-font: 2rem;
     --s-font: 0.8rem;
+    --first-letter-font: 3.2rem;
+    --first-letter-font-mobile: 3.1rem;
     --lg-c-line-height: 1.6rem;
     --c-letter-spacing: -.00278rem;
     --font-family: Arial, x-locale-body, sans-serif
@@ -317,10 +319,10 @@ span .fa {
 }
 
 .blog_detail_content p:first-child:first-letter {
-    font-size: 4.2rem;
+    font-size: var(--first-letter-font);
     font-weight: 700;
     float: left;
-    line-height: 4.2rem;
+    line-height: var(--first-letter-font);
     margin-right: 4px;
     text-transform: uppercase;
     color: #2f2361;
@@ -334,26 +336,26 @@ span .fa {
     }
 
     .blog_detail_content p:first-child:first-letter {
-        font-size: 4rem;
-        line-height: 3.8rem;
+        font-size: var(--first-letter-font-mobile);
+        line-height: var(--first-letter-font-mobile);
     }
 }
 
-img + br + em {
+p img + em {
     font-style: normal;
     font-family: sans-serif;
     display: inherit;
     text-align: center;
-    color: #6c757d !important;
-    font-size: 95%;
-    margin: .5rem 0 0;
+    color: #4e545a !important;
+    font-size: 85%;
+    margin: 0;
 }
 
 p img {
-    max-height: 600px;
+    max-height: 500px;
     max-width: 100%;
     display: block;
-    margin: 0 auto;
+    margin: 25px auto;
 }
 
 .circular-dp {
