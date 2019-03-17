@@ -133,8 +133,8 @@ class Images(models.Model):
         existing_file = storage.open(filename, 'r')
         image = Image.open(existing_file)
         size_in_kb = int(len(image.fp.read())/1024)
-        if size_in_kb > 50:
-            width, height = image.size
+        width, height = image.size
+        if size_in_kb > 50 and width >= 750:
             image = image.resize((750, int(750 * height / width)), Image.ANTIALIAS)
         sfile = io.BytesIO()
         image.save(sfile, filename_ext.replace('.', ''), quality=100)
