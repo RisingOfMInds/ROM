@@ -1,27 +1,23 @@
 {% extends 'blog/base.html' %}
 {% load static %}
 {% block meta %}
-    {% with description="Ashutosh Singh is the developer and writer with posts" title="Rising of Minds Authors" keywords="authors, risingofminds, blog, travel, tech, developer" %}
+    {% with description=author.get_title title=author.get_title keywords="author, risingofminds, blog, travel, tech, developer" %}
         {{ block.super }}
     {% endwith %}
 {% endblock meta %}
 {% block content %}
     <div class="content container">
-    {% regroup blogs by author as authors %}
         <div class="col-md-12 m-4 d-none d-md-block"></div>
-
-        {% for author in authors %}
-            <div class="row">
+            <div class="row d-flex justify-content-start align-items-center">
                 <div class="col-md-4 align-items-center">
-                    <img class="circular-dp rounded-circle my-2" src={{ author.grouper.get_thumbnail_url }} />
+                    <img class="circular-dp rounded-circle my-2" src={{ author.get_thumbnail_url }} />
                 </div>
                 <div class="col-md-8">
                     <div class="row">
-                        <div class="col-md-12 about_title my-2">{{ author.grouper }}</div>
-                        <div class="col-md-12 m-4 d-none d-md-block"></div>
+                        <div class="col-md-12 about_title my-2">{{ author }}</div>
                         <div class="col-md-12 about_description my-2">
                             <p>
-                                {{ author.grouper.description }}
+                                {{ author.description }}
                             </p>
                         </div>
                     </div>
@@ -29,9 +25,10 @@
             </div>
             <div class="row mt-5">
             <div class="col-12 mb-4 mx-1">
-                <h5>More From {{ author.grouper }}</h5>
+                <h5>More by {{ author.first_name }}</h5>
+                <hr>
                 </div>
-                    {% for blog in author.list %}
+                    {% for blog in blogs %}
                         <div class="col-md-4 mb-5">
                             <div class="popular_posts">
                                 <a class="popular_posts_image"
@@ -56,8 +53,6 @@
                         </div>
                     {% endfor %}
                 </div>
-            <hr>
-        {% endfor %}
 
         <div class="row">
         </div>

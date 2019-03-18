@@ -17,7 +17,7 @@
     font-weight: normal;
 }
 
-body{
+body {
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
 }
@@ -107,7 +107,7 @@ body{
     font-weight: bold;
 }
 
-@media screen and (max-width: 768px){
+@media screen and (max-width: 768px) {
     .about_title {
         font-size: var(--t-font);
         text-align: center;
@@ -314,15 +314,23 @@ span .fa {
     color: #6c757d !important;
 }
 
-.lead{
+.lead {
     font-size: var(--c-font);
+}
+
+.lead a {
+    color: #2f2361 !important;
+}
+
+.lead-list a{
+    color: #2f2361 !important;
 }
 
 .blog_detail_content p:first-child:first-letter {
     font-size: var(--first-letter-font);
     font-weight: 700;
     float: left;
-    line-height: var(--first-letter-font);
+    line-height: var(--first-letter-font-mobile);
     margin-right: 4px;
     text-transform: uppercase;
     color: #2f2361;

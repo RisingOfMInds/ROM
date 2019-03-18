@@ -25,7 +25,11 @@
                             <div class="popular_posts_description text-muted font-thin">{{ blog.description }}</div>
                         </a>
                     </div>
-                    <div class="mt-2 md-2">
+                    <div class="mt-2 lead-list">
+                        <a target="_blank"
+                           href={% url 'authors' slug=blog.author.get_slug pk=blog.author.pk %}>{{ blog.author }}</a>
+                    </div>
+                    <div class="md-2">
                         {% if blog.posted_on %}
                             <div class="date text-muted">
                                 {{ blog.posted_on }}

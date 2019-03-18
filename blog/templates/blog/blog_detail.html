@@ -1,7 +1,6 @@
 {% extends 'blog/base.html' %}
-{% load blog_tags %}
 {% block meta %}
-    {% with description=blog.description title=blog.title keywords=blog.tags %}
+    {% with description=blog.description title=blog.get_seo_title keywords=blog.tags %}
         {{ block.super }}
     {% endwith %}
 {% endblock meta %}
@@ -18,9 +17,11 @@
                         <img src="{{ blog.get_thumbnail_url }}"/>
                     </div>
                     <div class="row mx-1">
-                        <img class="author_thumbnail rounded-circle my-1" src="{{ blog.author.get_thumbnail_url }}"  alt="author"/>
+                        <img class="author_thumbnail rounded-circle my-1" src="{{ blog.author.get_thumbnail_url }}"
+                             alt="author"/>
                         <div class="col-6">
-                            <div class="lead">{{ blog.author }}</div>
+                            <div class="lead"><a target="_blank" href={% url 'authors' slug=blog.author.get_slug pk=blog.author.pk %}>{{ blog.author }}</a>
+                            </div>
                             {% if blog.posted_on %}
                                 <div class="date small mt-2">
                                     {{ blog.posted_on }}
@@ -28,7 +29,7 @@
                             {% endif %}
                         </div>
                     </div>
-                <hr>
+                    <hr>
                     <div class="blog_detail_content">
                         {{ blog.formatted_markdown| safe }}
                     </div>

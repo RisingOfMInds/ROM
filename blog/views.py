@@ -22,7 +22,14 @@ def about_us(request):
     categories = Category.objects.all()[:4]
     authors = Author.objects.filter(is_superuser=0, is_active=1)
     posts = Blog.objects.filter(author__in=authors).order_by('author_id')
-    return render(request, 'blog/about_us.html', {'categories': categories, 'authors': authors, 'blogs': posts})
+    return render(request, 'blog/author.html', {'categories': categories, 'authors': authors, 'blogs': posts})
+
+
+def authors(request, slug, pk):
+    categories = Category.objects.all()[:4]
+    author = Author.objects.get(is_active=1, pk=pk)
+    posts = Blog.objects.filter(author=author)
+    return render(request, 'blog/author.html', {'categories': categories, 'author': author, 'blogs': posts})
 
 
 def blog_detail(request, cat_slug, slug, pk):
@@ -51,7 +58,8 @@ def contact_us(request):
             message = form.cleaned_data['message']
             phone = form.cleaned_data['phone']
             try:
-                send_mail('Message from '+ name+ ' [ Contact: ' + email + ', ' +phone, message + ' ]', 'risingofminds@gmail.com', ['risingofminds@gmail.com'])
+                send_mail('Message from ' + name + ' [ Contact: ' + email + ', ' + phone, message + ' ]',
+                          'risingofminds@gmail.com', ['risingofminds@gmail.com'])
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
             return redirect('success')

@@ -32,6 +32,12 @@ class Author(AbstractUser):
     def __str__(self):
         return self.first_name + ' ' + self.last_name
 
+    def get_slug(self):
+        return self.first_name.lower() + '-' + self.last_name.lower()
+
+    def get_title(self):
+        return self.first_name + ' ' + self.last_name + ' - Rising Of Minds'
+
     def save(self, *args, **kwargs):
         super(Author, self).save(*args, **kwargs)
         create_thumbnail(self)
@@ -65,6 +71,9 @@ class Blog(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_seo_title(self):
+        return self.title + ' - ' + self.author.first_name + ' ' + self.author.last_name + ' - Rising Of Minds'
 
     def save(self, *args, **kwargs):
         super(Blog, self).save(*args, **kwargs)
