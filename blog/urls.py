@@ -11,7 +11,6 @@ urlpatterns = [
     path('contact-us/', views.contact_us, name='contact_us'),
     path('category/<slug:slug>', views.search, name='search'),
     path('<slug:cat_slug>/<slug:slug>-<int:pk>/', views.blog_detail, name='blog_detail'),
-    url(r'^markdownx/', include('markdownx.urls')),
-    url(r'mdeditor/', include('mdeditor.urls')),
+    path('martor/', include('martor.urls')),
     path('success/', success_view, name='success'),
 ]

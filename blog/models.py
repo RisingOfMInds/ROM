@@ -7,7 +7,7 @@ from django.db import models, transaction
 from django.dispatch import receiver
 from django.utils.text import slugify
 from markdownx.utils import markdownify
-from mdeditor.fields import MDTextField
+from martor.models import MartorField
 
 from risingofminds import settings
 
@@ -60,10 +60,11 @@ class Blog(models.Model):
     thumbnail = models.ImageField(upload_to=thumbnail_name, blank=True)
     slug = models.SlugField(max_length=100, unique=True)
     description = models.CharField(max_length=100, default="New Post")
-    body = MDTextField()
+    body = MartorField()
     posted_on = models.DateField(db_index=True, auto_now_add=True)
     views = models.IntegerField(default=0)
     category = models.ForeignKey('Category', on_delete=models.CASCADE)
+    active = models.BooleanField(default=False)
 
     @property
     def formatted_markdown(self):
@@ -141,7 +142,7 @@ class Images(models.Model):
         filename_base, filename_ext = os.path.splitext(filename)
         existing_file = storage.open(filename, 'r')
         image = Image.open(existing_file)
-        size_in_kb = int(len(image.fp.read())/1024)
+        size_in_kb = int(len(image.fp.read()) / 1024)
         width, height = image.size
         if size_in_kb > 50 and width >= 750:
             image = image.resize((750, int(750 * height / width)), Image.ANTIALIAS)

@@ -11,7 +11,7 @@ def search(request, slug=''):
     categories = Category.objects.all()
     if slug is not '':
         category = categories.filter(slug=slug).get()
-        posts = Blog.objects.filter(category=category.id, posted_on__lte=timezone.now()).order_by('posted_on')
+        posts = Blog.objects.filter(category=category.id, active=True).order_by('posted_on')
     else:
         posts = ''
 
@@ -21,27 +21,27 @@ def search(request, slug=''):
 def about_us(request):
     categories = Category.objects.all()[:4]
     authors = Author.objects.filter(is_superuser=0, is_active=1)
-    posts = Blog.objects.filter(author__in=authors).order_by('author_id')
+    posts = Blog.objects.filter(author__in=authors, active=True).order_by('author_id')
     return render(request, 'blog/author.html', {'categories': categories, 'authors': authors, 'blogs': posts})
 
 
 def authors(request, slug, pk):
     categories = Category.objects.all()[:4]
     author = Author.objects.get(is_active=1, pk=pk)
-    posts = Blog.objects.filter(author=author)
+    posts = Blog.objects.filter(author=author, active=True)
     return render(request, 'blog/author.html', {'categories': categories, 'author': author, 'blogs': posts})
 
 
 def blog_detail(request, cat_slug, slug, pk):
     categories = Category.objects.all()[:4]
-    blog = Blog.increment_view(pk=pk)
+    blog = Blog.objects.get(pk=pk, active=True)
     return render(request, 'blog/blog_detail.html', {'blog': blog, 'categories': categories})
 
 
 def home(request):
     categories = Category.objects.all()[:4]
-    carousel_blogs = Blog.objects.filter(posted_on__lte=timezone.now()).order_by('posted_on')[:3]
-    popular_blogs = Blog.objects.filter(posted_on__lte=timezone.now()).order_by('views')[:6]
+    carousel_blogs = Blog.objects.filter(active=True).order_by('posted_on')[:3]
+    popular_blogs = Blog.objects.filter(active=True).order_by('views')[:6]
     return render(request, 'blog/home.html',
                   {'carousel_blogs': carousel_blogs, 'popular_blogs': popular_blogs, 'categories': categories})
 
