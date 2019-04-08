@@ -41,7 +41,7 @@ def blog_detail(request, cat_slug, slug, pk):
 def home(request):
     categories = Category.objects.all()[:4]
     carousel_blogs = Blog.objects.filter(active=True).order_by('posted_on')[:3]
-    popular_blogs = Blog.objects.filter(active=True).order_by('views')[:6]
+    popular_blogs = Blog.objects.filter(active=True).order_by('views')
     return render(request, 'blog/home.html',
                   {'carousel_blogs': carousel_blogs, 'popular_blogs': popular_blogs, 'categories': categories})
 
