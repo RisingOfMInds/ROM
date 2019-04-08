@@ -415,3 +415,8 @@ blockquote::before {
 blockquote::after {
     content: '';
 }
+
+.author-social > button > a {
+    color: #2f2361 !important;
+    text-decoration: none
+}

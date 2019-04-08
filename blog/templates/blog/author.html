@@ -20,6 +20,23 @@
                                 {{ author.description }}
                             </p>
                         </div>
+                        <div class="col-md-12 author-social">
+                            {% if author.linkedin %}
+                                <button class="btn btn-light"><a class="fa fa-linkedin-square"
+                                                                 href="{{ author.linkedin }}"> LinkedIn </a>
+                                </button>
+                            {% endif %}
+                            {% if author.facebook %}
+                                <button class="btn btn-light"><a class="fa fa-facebook-square"
+                                                                 href="{{ author.facebook }}"> Facebook </a>
+                                </button>
+                            {% endif %}
+                            {% if author.twitter %}
+                                <button class="btn btn-light"><a class="fa fa-twitter-square"
+                                                                 href="{{ author.twitter }}"> Twitter </a>
+                                </button>
+                            {% endif %}
+                        </div>
                     </div>
                 </div>
             </div>

@@ -26,6 +26,9 @@ class Author(AbstractUser):
     username = models.CharField(max_length=100, db_index=True, unique=True)
     description = models.TextField(max_length=500)
     thumbnail = models.ImageField(upload_to=thumbnail_name, blank=True)
+    linkedin = models.URLField(blank=True)
+    facebook = models.URLField(blank=True)
+    twitter = models.URLField(blank=True)
 
     USERNAME_FIELD = 'username'
 
